@@ -1,0 +1,47 @@
+﻿@model DojoSurveyWithValidation.Models.Survey;
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+        <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <form asp-action="result" asp-controller="Home" method="post">
+                <div class="mb-3 mt-3">
+                    <span asp-validation-for="Name"></span>
+                    <label asp-for="Name" class="form-label"></label>
+                    <input class="form-control" asp-for="Name">
+                </div>
+                <div class="mb-3 mt-3">
+                    <span asp-validation-for="Location"></span>
+                    <label asp-for="Location" class="form-label"></label>
+                    <select class="form-select" asp-for="Location">
+                    <option>Bellevue, WA</option>
+                    <option>Boise, ID</option>
+                    <option>Chicago, IL</option>
+                    <option>Los Angeles, CA</option>
+                    <option>Silicon Valley, CA</option>
+                    </select>
+                </div>
+                <div class="mb-3 mt-3">
+                    <span asp-validation-for="Language"></span>
+                    <label asp-for="Language" class="form-label"></label>
+                    <select class="form-select" name="Language">
+                    <option>C#</option>
+                    <option>Python</option>
+                    <option>HTML</option>
+                    <option>CSS</option>
+                    <option>Javascript</option>
+                    </select>
+                </div>
+                <div class="mb-3 mt-3">
+                    <span asp-validation-for="Comment"></span>
+                    <label asp-for="Comment" class="form-label"></label>
+                    <textarea class="form-control" rows="3" asp-for="Comment"></textarea> 
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
