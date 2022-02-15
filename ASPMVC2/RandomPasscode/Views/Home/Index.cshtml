@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h6>Random passcode (passcode #@Context.Session.GetInt32("Count"))</h6>
+    <h3 class="border border-5 rounded">@Context.Session.GetString("Password")</h3>
+    <form asp-action="GeneratePassword" asp-controller="Home" method="post">
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </form>
+    
+</div>

@@ -18,14 +18,30 @@ namespace SimpleLoginRegistration.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        [HttpGet ("")]
+        public ViewResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost ("/register")]
+        public IActionResult Register(Registration newUser)
         {
-            return View();
+            if(ModelState.IsValid)
+            {
+                return View("Success");
+            }
+            return View("Index");
+        }
+
+        [HttpPost ("/login")]
+        public IActionResult Login(Login user)
+        {
+            if(ModelState.IsValid)
+            {
+                return View("Success");
+            }
+            return View("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
