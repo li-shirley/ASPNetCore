@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Dachi
+
+<div class="mx-auto text-center">
+    <h1 class="display-4">Dojodachi</h1>
+    <div class="d-flex justify-content-around">
+        <p>Fullness: @Model.Fullness</p>
+        <p>Happiness: @Model.Happiness</p>
+        <p>Meals: @Model.Meals</p>
+        <p>Energy: @Model.Energy</p>
+    </div>
+    <div>
+        <img src="http://placekitten.com/100/100" alt="kitten">
+    
+        @if (Model.State == "Win")
+        {
+            <h3 class="text-success">Congratulations! You won the game!</h3>
+        }
+        else if (Model.State == "Love")
+        {
+            <h3 class="text-danger">Sorry, your Dojodachi has died.</h3>
+        }
+        else {
+            <h3 class="text-warning">Action here</h3>
+        }
+    </div>
+    <div class="d-flex justify-content-center">
+        <button asp-action="Feed" asp-controller="Home" class="btn btn-primary">Feed</button>
+        <button asp-action="Play" asp-controller="Home" class="btn btn-success">Play</button>
+        <button asp-action="Work" asp-controller="Home" class="btn btn-danger">Work</button>
+        <button asp-action="Sleep" asp-controller="Home" class="btn btn-warning">Sleep</button>
+    </div>
+</div>
