@@ -6,31 +6,43 @@
 
 <div class="mx-auto text-center">
     <h1 class="display-4">Dojodachi</h1>
-    <div class="d-flex justify-content-around">
-        <p>Fullness: @Model.Fullness</p>
-        <p>Happiness: @Model.Happiness</p>
-        <p>Meals: @Model.Meals</p>
-        <p>Energy: @Model.Energy</p>
+    <div class="d-flex justify-content-center">
+        <p class="m-3">Fullness: @Model.Fullness</p>
+        <p class="m-3">Happiness: @Model.Happiness</p>
+        <p class="m-3">Meals: @Model.Meals</p>
+        <p class="m-3">Energy: @Model.Energy</p>
     </div>
     <div>
-        <img src="http://placekitten.com/100/100" alt="kitten">
-    
         @if (Model.State == "Win")
         {
-            <h3 class="text-success">Congratulations! You won the game!</h3>
+            <img class="my-5" src="https://placedog.net/200/200?id=3" alt="happy dog">
+            <h5 class="text-success m-3">Congratulations! You won the game!</h5>
+            <a asp-action="Reset" asp-controller="Home" class="btn btn-secondary">Play Again</a>
         }
-        else if (Model.State == "Love")
+        else if (Model.State == "Lose")
         {
-            <h3 class="text-danger">Sorry, your Dojodachi has died.</h3>
+            <img class="my-5" src="https://placedog.net/200/200?id=27" alt="sad dog">
+            <h5 class="text-danger m-3">Sorry, your Dojodachi has died.</h5>
+            <a asp-action="Reset" asp-controller="Home" class="btn btn-secondary">Play Again</a>
         }
         else {
-            <h3 class="text-warning">Action here</h3>
+            <div>
+                @if (Model.IsSad == true)
+                {
+                    <img class="my-5" src="https://placedog.net/200/200?id=27" alt="sad dog">
+                }
+                else
+                {
+                    <img class="my-5" src="https://placedog.net/200/200?id=3" alt="happy dog">
+                }
+            </div>
+            <h5 class="text-warning m-3">@Model.Message</h5>
         }
     </div>
-    <div class="d-flex justify-content-center">
-        <button asp-action="Feed" asp-controller="Home" class="btn btn-primary">Feed</button>
-        <button asp-action="Play" asp-controller="Home" class="btn btn-success">Play</button>
-        <button asp-action="Work" asp-controller="Home" class="btn btn-danger">Work</button>
-        <button asp-action="Sleep" asp-controller="Home" class="btn btn-warning">Sleep</button>
+    <div class="d-flex justify-content-center m-3">
+        <a asp-action="Feed" asp-controller="Home" class="btn btn-primary mx-3">Feed</a>
+        <a asp-action="Play" asp-controller="Home" class="btn btn-success mx-3">Play</a>
+        <a asp-action="Work" asp-controller="Home" class="btn btn-danger mx-3">Work</a>
+        <a asp-action="Sleep" asp-controller="Home" class="btn btn-warning mx-3">Sleep</a>
     </div>
 </div>

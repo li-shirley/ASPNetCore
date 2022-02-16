@@ -22,7 +22,7 @@ namespace Dojodachi.Controllers
         [HttpGet("")]
         public IActionResult Index()
         {
-            Dachi sessionDachi = HttpContext.Session.GetObjectFromJson<Dachi>("Dojodachi");
+            Dachi sessionDachi = HttpContext.Session.GetObjectFromJson<Dachi>("Dachi");
 
             if (sessionDachi == null)
             {
@@ -48,7 +48,29 @@ namespace Dojodachi.Controllers
             sessionDachi.Play(HttpContext.Session);
             return RedirectToAction("Index");
         }
-        
+
+        [HttpGet("/Work")]
+        public IActionResult Work()
+        {
+            Dachi sessionDachi = HttpContext.Session.GetObjectFromJson<Dachi>("Dachi");
+            sessionDachi.Work(HttpContext.Session);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("/Sleep")]
+        public IActionResult Sleep()
+        {
+            Dachi sessionDachi = HttpContext.Session.GetObjectFromJson<Dachi>("Dachi");
+            sessionDachi.Sleep(HttpContext.Session);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("/Reset")]
+        public IActionResult Reset()
+        {
+            HttpContext.Session.SetObjectAsJson("Dachi", null);
+            return RedirectToAction("Index");
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
